@@ -39,6 +39,7 @@ Download the current project on your PC from "Clone or download " button In the 
 
    - add two items in filter list in "convert type'' parameter ['OGC Sqlite','Geo Package']
 
+![like this](https://github.com/magicdeveloper/GeoDatabaseToSqlite/blob/master/pic/parameters.PNG)
 
 ##
 **End**
