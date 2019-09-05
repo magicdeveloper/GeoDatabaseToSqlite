@@ -22,7 +22,7 @@ XlsxWriter  from source  : https://github.com/jmcnamara/XlsxWriter.git
 #### 4- install  XlsxWriter  library  using next command
     python setup.py install
   
-  ![Congratulations you are now finished installing the library](https://github.com/magicdeveloper/GeoDatabaseToSqlite/blob/master/pic/addscript1.PNG)
+  ![Congratulations you are now finished installing the library](https://github.com/magicdeveloper/GeoDatabaseToSqlite/blob/master/pic/cmd.PNG)
 ## next step
 Download the current project on your PC from "Clone or download " button In the top right corner of current page
 
