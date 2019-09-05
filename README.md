@@ -34,9 +34,9 @@ Download the current project on your PC from "Clone or download " button In the 
  - #####  add two input parameters to tool  
 	- The first parameter name  "database'' and datatype is "workspace"
 	- The second parameter name  "convert type'' and datatype is ''String''
-	   - and add two items in filter list  in "convert type'' parameter 
-		'OGC Sqlite'
-		'Geo Package'
+	   - add two items in filter list  in "convert type'' parameter 
+		 'OGC Sqlite'
+		 'Geo Package'
 
 
 ##
