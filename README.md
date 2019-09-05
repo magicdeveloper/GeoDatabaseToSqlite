@@ -25,7 +25,7 @@ Congratulations you are now finished installing the library
   ![Congratulations you are now finished installing the library](https://github.com/magicdeveloper/GeoDatabaseToSqlite/blob/master/pic/cmd.PNG)
 ## next step
 Download the current project on your PC from "Clone or download " button In the top right corner of current page
-
+ ![enter image description here](https://github.com/magicdeveloper/GeoDatabaseToSqlite/blob/master/pic/clone.PNG)
 #### 1- open [GdbToSqlite.py](https://github.com/magicdeveloper/GeoDatabaseToSqlite/blob/master/GdbToSqlite.py) file and go to line 69 and replace the next code with your correct path and save it
     dll_path =  r'c:\Program Files (x86)\ArcGIS\Desktop10.6\DatabaseSupport\SQLite\Windows32\stgeometry_sqlite.dll'
 #### 2- open _ArcCatalog_ and create new toolbox and right click and choose Add -> Script
