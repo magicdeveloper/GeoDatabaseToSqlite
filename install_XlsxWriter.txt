@@ -1,0 +1,9 @@
+cd \
+cd C:\Python27\
+set path=C:\Python27\ArcGIS10.6
+set path=C:\Python27
+C:\Program Files (x86)\ArcGIS\Desktop10.5\arcpy; C:\Program Files (x86)\ArcGIS\Desktop10.5\bin; C:\Python27\Lib\site-packages;
+git clone https://github.com/jmcnamara/XlsxWriter.git
+cd XlsxWriter
+python setup.py install
+pause
