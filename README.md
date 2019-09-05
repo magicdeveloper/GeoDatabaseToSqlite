@@ -29,8 +29,11 @@ Download the current project on your PC from "Clone or download " button In the 
 #### 1- open [GdbToSqlite.py](https://github.com/magicdeveloper/GeoDatabaseToSqlite/blob/master/GdbToSqlite.py) file and go to line 69 and replace the next code with your correct path and save it
     dll_path =  r'c:\Program Files (x86)\ArcGIS\Desktop10.6\DatabaseSupport\SQLite\Windows32\stgeometry_sqlite.dll'
 #### 2- open _ArcCatalog_ and create new toolbox and right click and choose Add -> Script
+![enter image description here](https://github.com/magicdeveloper/GeoDatabaseToSqlite/blob/master/pic/addscript.PNG)
  - ##### set script name as you which and  click  next 
+		 ![enter image description here](https://github.com/magicdeveloper/GeoDatabaseToSqlite/blob/master/pic/addscript1.PNG)
  - ##### set script file to [Main.py](https://github.com/magicdeveloper/GeoDatabaseToSqlite/blob/master/Main.py) and  click  next 
+ ![enter image description here](https://github.com/magicdeveloper/GeoDatabaseToSqlite/blob/master/pic/addscript2.PNG)
 -  ##### add two input parameters to tool
 
 - The first parameter name "database'' and datatype is "workspace"
