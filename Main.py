@@ -15,12 +15,15 @@ arcpy.env.overwriteOutput = True
 #---------------------------------------------------------------------------
 arcpy.AddMessage("Data Base converter Start wait Second.....")
 print("Data Base converter Start wait Second.....")
-workspace = arcpy.GetParameterAsText(1)
+workspace = arcpy.GetParameterAsText(0)
+ConvertType = arcpy.GetParameterAsText(1)
 #TAG_RE = re.compile(r'<[^>]+>')
 #-----------------------------------------------------------------------------------
 ##try:
 if workspace == '#' or not workspace:
      workspace =r"C:\D\KA\Project\SDI\SDI_v0.10_2019-07-20_SK.gdb"
+if ConvertType == '#' or not ConvertType:
+     ConvertType ='Geo Package'
 arcpy.env.workspace =str(workspace.encode("cp1256")) 
 workspacedesc = arcpy.Describe(arcpy.env.workspace)
 workspaceEncoding= str(workspace.encode("cp1256")).decode("cp1256") 
@@ -28,7 +31,7 @@ arcpy.AddMessage('----------------------------------------')
 print('----------------------------------------')
 arcpy.AddMessage(workspaceEncoding)
 #-----------------------------------------------------------------------------------
-converter = GdbToSqlite(arcpy.env.workspace, 'Geo Package')
+converter = GdbToSqlite(arcpy.env.workspace, ConvertType)
 #-----------------------------------------------------------------------------------     
 
 Database= str(workspace.encode("cp1256")).split('\\')[-1:][0]
