@@ -167,8 +167,7 @@ class GdbToSqlite:
           #creating the table (with all columns except the geometry column)
           this.run('''CREATE TABLE {table} ({columns});'''.format(table=LayerName,
                                                              columns=','.join(columns)))
-          print('''CREATE TABLE {table} ({columns});'''.format(table=LayerName,
-                                                             columns=','.join(columns)))
+          #print('''CREATE TABLE {table} ({columns});'''.format(table=LayerName, columns=','.join(columns)))
           this.conn.commit()                                     
 
           #getting a list of column names to store the data
@@ -177,10 +176,8 @@ class GdbToSqlite:
           rows = (r for r in arcpy.da.SearchCursor(source_tbl,data_columns))
           insert_values = ','.join(['?' for i in xrange(len(data_columns))] )
           sql_insert_rows = '''Insert into {table_name} ({columns}) values ({insert_values})'''
-          print(sql_insert_rows.format(table_name = LayerName,columns = ','.join(data_columns),insert_values=insert_values))
-          this.conn.executemany(sql_insert_rows.format(table_name = LayerName,
-                                                  columns = ','.join(data_columns),
-                                                  insert_values=insert_values),rows)
+          #print(sql_insert_rows.format(table_name = LayerName,columns = ','.join(data_columns),insert_values=insert_values))
+          this.conn.executemany(sql_insert_rows.format(table_name = LayerName, columns = ','.join(data_columns),insert_values=insert_values),rows)
                                  
           this.conn.commit()
           return this.conn, LayerName
@@ -216,6 +213,9 @@ class GdbToSqlite:
 #----------------------------------------------------------------------------
      def Close(this):
           this.conn.close()
+          return this.NewDbName
+          
+          
 #----------------------------------------------------------------------------
      def GetDbName(this):
           return this.NewDbName

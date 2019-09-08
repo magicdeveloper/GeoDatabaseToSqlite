@@ -75,89 +75,89 @@ print('------------export DataSets--------------')
 
 #-----------------------------------------------------------------------------------
 
-for dataset in datasets:
-    DatasetName = str(dataset.encode("cp1256"))
-    if len(DatasetName) < 1:
-          DatasetName = "NonDataSet"
-    arcpy.AddMessage(str(DatasetName).decode("cp1256"))
-    print(str(DatasetName).decode("cp1256"))
-    #----------------------------------------------------
-    FeatureClassesList = arcpy.ListFeatureClasses("*","",dataset)
-    FeatureClassesList.sort()
-    if len(FeatureClassesList) > 1:
-         FCCol = 1
-         xls.merge_range(FCRow, FCCol,(FCRow + len(FeatureClassesList)-1), FCCol, FCSheet, 2, DatasetName)
-         FCCol = FCCol + 1
-         
-    for fc in FeatureClassesList:
-        FCCol = 2
-        FCDesc = ""
-        FCDescError = 0 
-        try:
-              FCDesc = arcpy.Describe(fc)
-        except IOError:
-              FCDescError = 1
-              ErorrsMSG = ErorrsMSG +  "Error In Describe FeatureClass: " + str(fc.encode("cp1256")).decode("cp1256")+"\n"
-              arcpy.AddMessage("Error In Describe FeatureClass: " + str(fc.encode("cp1256")).decode("cp1256"))
-              print("Error In Describe FeatureClass: " + str(fc.encode("cp1256")).decode("cp1256"))
-              #print ("Error In Describe FeatureClass: " + str(fc.encode("cp1256")).decode("cp1256"))
-              ErrorCount = ErrorCount + 1
-         
- 
-        arcpy.AddMessage(str('---------------------').decode("cp1256"))
-        arcpy.AddMessage(str("DataSet: "+DatasetName + " --> Feature Class : " + fc.encode("cp1256")).decode("cp1256"))
-        print(str("DataSet: "+DatasetName + " --> Feature Class : " + fc.encode("cp1256")).decode("cp1256"))
-
-        if len(FeatureClassesList) < 2:
-              FCCol = 1
-              xls.Write(FCRow,FCCol,DatasetName,FCSheet,2)
-              FCCol = FCCol + 1
-
-        xls.Write(FCRow,FCCol,fc.encode("cp1256"),FCSheet,3)
-        FCCol = FCCol + 1
-        LayerName = converter.FirefeatureClass(fc,DatasetName);
-        xls.Write(FCRow,FCCol,LayerName,FCSheet,3)
-        #print(LayerName)
-        FCCol = FCCol + 1
-        if hasattr(FCDesc,'featureType'):
-             xls.Write(FCRow,FCCol,FCDesc.shapeType,FCSheet,3)
-        FCCol = FCCol + 1
-        #FCCol = 2
-        FCRow = FCRow + 1
-        del FCDesc
-
-
-
-    #-----------------------------------------------------------
-    del FeatureClassesList
-
-#-----------------------------------------------------------------------------------
- 
-#-----------------------------------------------------------------------------------
-### Get and print a list of tables
-##arcpy.AddMessage(str('-----------------------------------').decode("cp1256"))
-##arcpy.AddMessage(str('Export Taples').decode("cp1256"))
-##arcpy.AddMessage(str('-----------------------------------').decode("cp1256"))
-###print('-----------------------------------')
-###print('Export Taples')
-###print('-----------------------------------')
-##tables = arcpy.ListTables()
-##for table in tables:
-##     BusinessTableCol = 1
-##     tablename = str(table.encode("cp1256")).decode("cp1256")
-##     arcpy.AddMessage(tablename)
-##     xls.Write(BusinessTableRow,BusinessTableCol,str(table.encode("cp1256")),BusinessTableSheet,3)
-##     BusinessTableCol = BusinessTableCol + 1
-##     #-----------------------------------
-##     newDbname = converter.GetDbName()
-##     #arcpy.TableToTable_conversion(tablename, newDbname, tablename)
-##     #NewTableName = converter.FireBusinessTable(table);
-##     xls.Write(BusinessTableRow,BusinessTableCol,tablename,BusinessTableSheet,3)
+##for dataset in datasets:
+##    DatasetName = str(dataset.encode("cp1256"))
+##    if len(DatasetName) < 1:
+##          DatasetName = "NonDataSet"
+##    arcpy.AddMessage(str(DatasetName).decode("cp1256"))
+##    print(str(DatasetName).decode("cp1256"))
+##    #----------------------------------------------------
+##    FeatureClassesList = arcpy.ListFeatureClasses("*","",dataset)
+##    FeatureClassesList.sort()
+##    if len(FeatureClassesList) > 1:
+##         FCCol = 1
+##         xls.merge_range(FCRow, FCCol,(FCRow + len(FeatureClassesList)-1), FCCol, FCSheet, 2, DatasetName)
+##         FCCol = FCCol + 1
+##         
+##    for fc in FeatureClassesList:
+##        FCCol = 2
+##        FCDesc = ""
+##        FCDescError = 0 
+##        try:
+##              FCDesc = arcpy.Describe(fc)
+##        except IOError:
+##              FCDescError = 1
+##              ErorrsMSG = ErorrsMSG +  "Error In Describe FeatureClass: " + str(fc.encode("cp1256")).decode("cp1256")+"\n"
+##              arcpy.AddMessage("Error In Describe FeatureClass: " + str(fc.encode("cp1256")).decode("cp1256"))
+##              print("Error In Describe FeatureClass: " + str(fc.encode("cp1256")).decode("cp1256"))
+##              #print ("Error In Describe FeatureClass: " + str(fc.encode("cp1256")).decode("cp1256"))
+##              ErrorCount = ErrorCount + 1
+##         
 ## 
-##     #-----------------------------------
-##     BusinessTableRow = BusinessTableRow + 1
-##arcpy.AddMessage(str('-------------------------').decode("cp1256"))
-###-----------------------------------------------------------------------------------
+##        arcpy.AddMessage(str('---------------------').decode("cp1256"))
+##        arcpy.AddMessage(str("DataSet: "+DatasetName + " --> Feature Class : " + fc.encode("cp1256")).decode("cp1256"))
+##        print(str("DataSet: "+DatasetName + " --> Feature Class : " + fc.encode("cp1256")).decode("cp1256"))
+##
+##        if len(FeatureClassesList) < 2:
+##              FCCol = 1
+##              xls.Write(FCRow,FCCol,DatasetName,FCSheet,2)
+##              FCCol = FCCol + 1
+##
+##        xls.Write(FCRow,FCCol,fc.encode("cp1256"),FCSheet,3)
+##        FCCol = FCCol + 1
+##        LayerName = converter.FirefeatureClass(fc,DatasetName);
+##        xls.Write(FCRow,FCCol,LayerName,FCSheet,3)
+##        #print(LayerName)
+##        FCCol = FCCol + 1
+##        if hasattr(FCDesc,'featureType'):
+##             xls.Write(FCRow,FCCol,FCDesc.shapeType,FCSheet,3)
+##        FCCol = FCCol + 1
+##        #FCCol = 2
+##        FCRow = FCRow + 1
+##        del FCDesc
+##
+##
+##
+##    #-----------------------------------------------------------
+##    del FeatureClassesList
+
+#-----------------------------------------------------------------------------------
+ 
+#-----------------------------------------------------------------------------------
+# Get and print a list of tables
+arcpy.AddMessage(str('-----------------------------------').decode("cp1256"))
+arcpy.AddMessage(str('Export Taples').decode("cp1256"))
+arcpy.AddMessage(str('-----------------------------------').decode("cp1256"))
+print('-----------------------------------')
+print('Export Taples')
+#print('-----------------------------------')
+tables = arcpy.ListTables()
+for table in tables:
+     BusinessTableCol = 1
+     tablename = str(table.encode("cp1256")).decode("cp1256")
+     arcpy.AddMessage(tablename)
+     xls.Write(BusinessTableRow,BusinessTableCol,str(table.encode("cp1256")),BusinessTableSheet,3)
+     BusinessTableCol = BusinessTableCol + 1
+     #-----------------------------------
+     #newDbname = converter.GetDbName()
+     #arcpy.TableToTable_conversion(tablename, newDbname, tablename)
+     NewTableName = converter.FireBusinessTable(table);
+     xls.Write(BusinessTableRow,BusinessTableCol,tablename,BusinessTableSheet,3)
+ 
+     #-----------------------------------
+     BusinessTableRow = BusinessTableRow + 1
+arcpy.AddMessage(str('-------------------------').decode("cp1256"))
+#-----------------------------------------------------------------------------------
  
 #-------------------------------------------------------------------------------------
  
@@ -169,7 +169,9 @@ arcpy.AddMessage(str("Finsh").decode("cp1256"))
 arcpy.AddMessage("Excel File location:") 
 arcpy.AddMessage(ExcelName)
 
-converter.Close()
+mynewdb = converter.Close()
+arcpy.AddMessage(mynewdb)
+print(mynewdb)
 del xls
 del datasets
 #del tables
